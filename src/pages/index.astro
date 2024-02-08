@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Navigation from '../components/widgets/Navigation.astro'
-import Hero from '../components/widgets/Hero.astro'
+import Hero2 from '../components/widgets/Hero2.astro'
 
 import heroImage from '../util/place-holder-image.jpg'
 ---
@@ -10,7 +10,7 @@ import heroImage from '../util/place-holder-image.jpg'
 	description='the main page'
 >
 	<main>
-		<Hero
+		<Hero2
 			image={{ src: heroImage, alt: 'Hero Image' }}
 		>
 			<Fragment slot="title">
@@ -23,7 +23,7 @@ import heroImage from '../util/place-holder-image.jpg'
 				>
 				<span class="block mb-1 sm:hidden font-bold dark:text-white/75 text-black/50">I spend a lot of time on my computer</span>
 			</Fragment>
-		</Hero>
+		</Hero2>
 	</main>
 
 </Layout>
