@@ -15,53 +15,104 @@ const {
   subtitle = await Astro.slots.render('subtitle'),
   image = await Astro.slots.render('image'),
 } = Astro.props;
-
 ---
-<!-- <div class="hero min-h-screen z-5" id="hero">
-    <div class="hero-content text-center">
-      <div class="max-w-5xl">
-        {
-          title && (
-            <h1
-              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-white"
-              set:html={title}
-            />
-          )
-        }
-        {subtitle && <p class="text-xl text-muted mb-6 dark:text-white/90 text-black/50" set:html={subtitle} />}
-        {
-          image && (
-            <div class="relative m-auto max-w-md">
-              {typeof image === 'string' ? (
-                <Fragment set:html={image} />
-              ) : (
-                <Image
-                  class="mx-auto rounded-md w-full"
-                  widths={[400, 768, 1024, 2040]}
-                  sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
-                  loading="eager"
-                  width={1024}
-                  height={576}
-                  {...image}
-                />
-              )}
-            </div>
-          )
-        }
-        <div class="animate-bounce text-xl text-muted mb-0 dark:text-white uppercase pt-20">
-          scroll
+
+
+<!-- <script>
+  import { gsap } from "gsap";
+    
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.to(".box", {
+  scrollTrigger: ".box", // start animation when ".box" enters the viewport
+  duration: 2,
+  x: 500,
+  rotation: 360,
+  }); 
+</script> -->
+
+<script>
+  import { gsap } from "gsap";
+    
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  
+  gsap.registerPlugin(ScrollTrigger);
+
+  let tl = gsap.timeline({
+  // yes, we can add it to an entire timeline!
+  scrollTrigger: {
+    trigger: ".container",
+    pin: true, // pin the trigger element while active
+    start: "top top", // when the top of the trigger hits the top of the viewport
+    end: "+=500", // end after scrolling 500px beyond the start
+    scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+    snap: {
+      snapTo: "labels", // snap to the closest label in the timeline
+      duration: { min: 0.2, max: 3 }, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
+      delay: 0.2, // wait 0.2 seconds from the last scroll event before doing the snapping
+      ease: "power1.inOut", // the ease of the snap animation ("power3" by default)
+    },
+  },
+});
+
+// add animations and labels to the timeline
+tl.addLabel("start")
+  .from(".box p", { scale: 0.3, rotation: 45, autoAlpha: 0 })
+  .addLabel("color")
+  .from(".box", { backgroundColor: "#28a92b" })
+  .addLabel("spin")
+  .to(".box", { rotation: 360 })
+  .addLabel("end");
+</script>
+
+
+  <div class="bg-gradient-to-r from-slate-800 to-slate-600">
+    <Navigation />
+    <div class="flex flex-col justify-center items-center w-full h-screen bg-cover bg-center">
+      <div class="hero-content text-center">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold">Hello there</h1>
+          <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
         </div>
       </div>
     </div>
-  </div> -->
-  <Navigation />
-<div class="hero min-h-screen" style={{backgroundImage: 'url(' + heroImage.src + ')'}}>
-  <div class="hero-overlay bg-opacity-30"></div>
-  <div class="hero-content text-center text-neutral-content">
-    <div class="max-w-md">
-      <h1 class="mb-5 text-5xl font-bold"></h1>
-      <p class="mb-5"></p>
-      <!-- <button class="btn btn-primary">Get Started</button> -->
+
+    <div class="flex flex-col justify-start items-center w-full h-screen bg-cover bg-center">
+      <div class="max-w-2xl text-center">
+        <h1 class="text-5xl font-bold">Wanna Hear Some Music?</h1>
+          <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+      </div>
+      <!-- <div class="box">
+        test
+      </div> -->
+      <!-- START Carousel -->
+      <div class="carousel carousel-center rounded-box max-w-6xl box">
+        <div class="carousel-item">
+            <img src="https://daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.jpg" alt="Burger" />
+        </div> 
+        <div class="carousel-item">
+          <img src="https://daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.jpg" alt="Burger" />
+        </div> 
+        <div class="carousel-item">
+          <img src="https://daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.jpg" alt="Burger" />
+        </div> 
+        <div class="carousel-item">
+          <img src="https://daisyui.com/images/stock/photo-1494253109108-2e30c049369b.jpg" alt="Burger" />
+        </div> 
+        <div class="carousel-item">
+          <img src="https://daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.jpg" alt="Burger" />
+        </div> 
+        <div class="carousel-item">
+          <img src="https://daisyui.com/images/stock/photo-1559181567-c3190ca9959b.jpg" alt="Burger" />
+        </div> 
+        <div class="carousel-item">
+          <img src="https://daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.jpg" alt="Burger" />
+        </div>
+      </div>
+      <!-- END Carousel -->
+
     </div>
   </div>
-</div>
+  
