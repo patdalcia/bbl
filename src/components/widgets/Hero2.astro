@@ -1,7 +1,8 @@
 ---
 import Navigation from "./Navigation.astro";
+import Hero from "./Hero.astro";
 ---
-<section class="bg-black">
+<section class="hidden md:block bg-black">
     <div class="grid-container">
         <div class="grid">
           <div class="gridLayer">
@@ -48,6 +49,9 @@ import Navigation from "./Navigation.astro";
           </div> -->
         </div>
       </div>
+</section>
+<section class="md:hidden">
+    <Hero />
 </section>
 
 <style>
