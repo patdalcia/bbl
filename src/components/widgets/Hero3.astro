@@ -1,0 +1,26 @@
+---
+// Example frontmatter script block in an Astro component
+// Let's assume you have a fixed list of image filenames for demonstration
+const images = [
+  '/util/image1.jpg',
+  '/util/image2.jpg',
+  '/util/image3.jpg',
+  // Add all your images here
+];
+const numberOfImagesToSelect = 3; // Change this based on how many images you want to display
+// Shuffle and select images
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+  }
+}
+shuffleArray(images);
+const selectedImages = images.slice(0, numberOfImagesToSelect);
+---
+<!-- HTML template -->
+<div>
+  {selectedImages.map((src, index) => (
+    <img key={index} src={src} alt={`Random image ${index + 1}`} />
+  ))}
+</div>

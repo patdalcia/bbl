@@ -1,0 +1,58 @@
+---
+
+---
+
+<div class="container bg-black">
+    <section class="panel bg-red-400">
+      ONE
+    </section>
+    <section class="panel bg-orange-400">
+      TWO
+    </section>
+    <section class="panel bg-purple-400">
+      THREE
+    </section>
+    <section class="panel bg-green-400">
+      FOUR
+    </section>
+    <section class="panel bg-gray-400">
+      FIVE
+    </section>
+</div> 
+
+  <style>
+  .container {
+    overscroll-behavior: none;
+    width: 600vw;
+    height: 100vh;
+    display: flex;
+    flex-wrap: nowrap;
+    position: relative;
+  }
+  .panel {
+    height: 100%;
+  }
+  </style>
+
+<script>
+    import { gsap } from "gsap";
+      
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    
+    gsap.registerPlugin(ScrollTrigger);
+  
+    let sections = gsap.utils.toArray(".panel");
+  
+    gsap.to(sections, {
+      xPercent: -100 * (sections.length - 1),
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".container",
+        pin: true,
+        scrub: 1,
+        snap: 1 / (sections.length - 1),
+        // base vertical scrolling on how wide the container is so it feels more natural.
+        end: "+=3500",
+      }
+    });
+  </script>

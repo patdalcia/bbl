@@ -7,6 +7,9 @@ export default {
 		extend: {      
 			fontFamily: {
 			sans: ["Creepster", ...defaultTheme.fontFamily.sans],
+			width: {
+				'600p': '600%',
+			},
 		  },
 		},
 	},

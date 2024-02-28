@@ -1,11 +1,288 @@
 ---
-import Navigation from './Navigation.astro';
-import heroImage from '../../util/miniHero5.png';
-
-
-
+import Navigation from "./Navigation.astro";
 ---
+<!-- <Navigation /> -->
+<section class="bg-black">
+    <div class="grid-container">
+        <div class="grid">
+          <div class="gridLayer">
+            <div class="gridBlock"></div>
+          </div>
+          <div class="gridLayer">
+            <div class="gridBlock"></div>
+          </div>
+          <div class="gridLayer">
+            <div class="gridBlock"></div>
+          </div>
+          <div class="gridLayer centerPiece">
+            <div class="gridBlock centerBlock flex justify-center items-start">
+                <div class="flex flex-col justify-center items-top w-full h-4/5 text-center">
+                    <h1 class="text-4xl font-bold">Hello there</h1>
+                    <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                </div>
+            </div>
+          </div>
+          <div class="gridLayer">
+            <div class="gridBlock"><a href="https://greensock.com" target="_blank"></a></div>
+          </div>
+          <div class="gridLayer">
+            <div class="gridBlock"></div>
+          </div>
+          <div class="gridLayer">
+            <div class="gridBlock"></div>
+          </div>
+          <div class="gridLayer">
+            <div class="gridBlock"></div>
+          </div>
+          <div class="gridLayer">
+            <div class="gridBlock"></div>
+          </div>
+        </div>
+      </div>
+</section>
 
-<div class="flex flex-col w-full h-screen bg-cover bg-center" style={{backgroundImage: 'url(' + heroImage.src + ')'}}>
-    <Navigation />
-</div>
+
+<style>
+    .gridBlock {
+  opacity: 0;
+}
+
+
+/* Grid almost fully pulled from https://www.rino-pelle.com/ */
+.grid-container {
+  width: 100vw;
+  height: 400vh;
+  position: relative;
+}
+.grid {
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 70vw;
+  height: 60vw;
+  margin: 0 calc(100vw / 20 * 3);
+  position: absolute;
+  
+}
+@media only screen and (max-width: 580px) {
+  .grid {
+    margin: 0;
+    width: 100vw;
+    height: 89.444vw;
+  }
+}
+.gridBlock {
+  background-size: cover;
+  background-color: transparent;
+}
+.gridLayer {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  will-change: transform;
+  transform-origin: 44.951% 50%;
+}
+.gridLayer:nth-child(1) .gridBlock {
+  top: 5vw;
+  left: 20vw;
+  width: 10vw;
+  height: 10vw;
+}
+@media only screen and (max-width: 580px) {
+  .gridLayer:nth-child(1) .gridBlock {
+    top: 11.111vw;
+    left: 23.889vw;
+    width: 15vw;
+    height: 15vw;
+  }
+}
+.gridLayer:nth-child(2) .gridBlock {
+  top: 0;
+  left: 32.5vw;
+  width: 15vw;
+  height: 15vw;
+}
+@media only screen and (max-width: 580px) {
+  .gridLayer:nth-child(2) .gridBlock {
+    top: 0;
+    left: 43.333vw;
+    width: 26.389vw;
+    height: 26.389vw;
+  }
+}
+.gridLayer:nth-child(3) .gridBlock {
+  left: 0;
+  top: 25vw;
+  width: 15vw;
+  height: 15vw;
+}
+@media only screen and (max-width: 580px) {
+  .gridLayer:nth-child(3) .gridBlock {
+    top: 30.278vw;
+    left: 0;
+    width: 26.389vw;
+    height: 26.389vw;
+  }
+}
+.gridLayer:nth-child(4) .gridBlock {
+  top: 17.5vw;
+  left: 17.5vw;
+  width: 30vw;
+  height: 30vw;
+}
+@media only screen and (max-width: 580px) {
+  .gridLayer:nth-child(4) .gridBlock {
+    top: 30.278vw;
+    left: 30.278vw;
+    width: 39.444vw;
+    height: 39.444vw;
+  }
+}
+.gridLayer:nth-child(5) {
+  z-index: 1;
+}
+.gridLayer:nth-child(5) .gridBlock {
+  top: 20vw;
+  left: 50vw;
+  width: 5vw;
+  height: 5vw;
+}
+@media only screen and (max-width: 580px) {
+  .gridLayer:nth-child(5) .gridBlock {
+    top: 23.889vw;
+    left: 73.889vw;
+    width: 15.278vw;
+    height: 15.278vw;
+  }
+}
+.gridLayer:nth-child(5) a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gridLayer:nth-child(5) svg {
+  width: 1.75vw;
+}
+@media only screen and (max-width: 580px) {
+  .gridLayer:nth-child(5) svg {
+    width: 4.722vw;
+  }
+}
+.gridLayer:nth-child(6) .gridBlock {
+  left: 50vw;
+  top: 27.5vw;
+  width: 20vw;
+  height: 20vw;
+}
+@media only screen and (max-width: 580px) {
+  .gridLayer:nth-child(6) .gridBlock {
+    top: 43.889vw;
+    left: 73.889vw;
+    width: 26.389vw;
+    height: 26.389vw;
+  }
+}
+.gridLayer:nth-child(7) .gridBlock {
+  left: 10vw;
+  top: 42.5vw;
+  width: 5vw;
+  height: 5vw;
+}
+@media only screen and (max-width: 580px) {
+  .gridLayer:nth-child(7) .gridBlock {
+    display: none;
+  }
+}
+.gridLayer:nth-child(8) .gridBlock {
+  bottom: 5vw;
+  left: 42.5vw;
+  width: 5vw;
+  height: 5vw;
+}
+@media only screen and (max-width: 580px) {
+  .gridLayer:nth-child(8) .gridBlock {
+    display: none;
+  }
+}
+.gridLayer:nth-child(9) .gridBlock {
+  bottom: 0;
+  left: 50vw;
+  width: 10vw;
+  height: 10vw;
+}
+@media only screen and (max-width: 580px) {
+  .gridLayer:nth-child(9) .gridBlock {
+    top: 73.889vw;
+    left: 58.889vw;
+    width: 15.278vw;
+    height: 15.278vw;
+  }
+}
+.gridBlock {
+  display: block;
+  position: absolute;
+}
+</style>
+
+<script>
+    import { gsap } from "gsap";
+      
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+      
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.timeline({
+    scrollTrigger: {
+        trigger: ".grid-container",
+        start: "top top",
+        end: () => innerHeight * 4,
+        scrub: true,
+        pin: ".grid",
+        anticipatePin: 1
+    }
+    })
+    .set(".gridBlock:not(.centerBlock)", {autoAlpha: 0})
+    .to(".gridBlock:not(.centerBlock)", {duration: 0.1, autoAlpha: 1}, 0.001)
+    .from(".gridLayer", {
+    scale: 3.3333,
+    ease: "none",
+    });
+
+    const imagePath = "https://ik.imagekit.io/patdalcia/bbl/";
+    const size = Math.max(innerWidth, innerHeight);
+
+    // Function to shuffle an array
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+        }
+        return array;
+    }
+
+    // Assuming you have 10 images and you want to assign them randomly
+    const imageIndexes = shuffleArray([...Array(10).keys()]); // Create an array of indexes [0, 1, ..., 9] and shuffle it
+
+    // Set a background image from ImageKit randomly
+    gsap.set('.gridBlock:not(.centerBlock)', {
+    backgroundImage: (i) => {
+        const imageIndex = imageIndexes[i % imageIndexes.length] + 1; // Use modulo to loop over indexes if there are more blocks than images
+        return `url(${imagePath}image${imageIndex}.png?tr=w-${size},h-${size})`;
+    }
+    });
+    
+    // Set the center piece to always use 'Hero.png'
+    gsap.to(".centerPiece .gridBlock", {autoAlpha: 1, duration: 0.5});
+    // const bigImg = new Image;    
+    // bigImg.addEventListener("load", function () {
+    
+    // });
+    // bigImg.src = `https://ik.imagekit.io/patdalcia/bbl/Transparent.png?tr=w-${size},h-${size}`;
+    // `${imagePath}Hero.png?tr=w-${size},h-${size}`
+</script>
+
+<!-- `https://picsum.photos/${size}/${size}?random=50` -->
+<!-- `url(https://picsum.photos/${size}/${size}?random=${i})` -->
