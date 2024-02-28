@@ -42,11 +42,11 @@ import Hero from "./Hero.astro";
           <div class="gridLayer">
             <div class="gridBlock"></div>
           </div>
-          <!-- <div class="gridLayer">
-            <div class="gridBlock next-section bg-white">
-                test
-              </div>
-          </div> -->
+          <div class="gridLayer">
+            <div class="gridBlock next-section">
+                <Hero />
+            </div>
+          </div>
         </div>
       </div>
 </section>
@@ -233,13 +233,13 @@ import Hero from "./Hero.astro";
     height: 15.278vw;
   }
 }
-/* .gridLayer:nth-child(10) .gridBlock {
-    top: 80vw;
+ .gridLayer:nth-child(10) .next-section {
+    top: 70vw;
     left: 0;
-    height: 20vh;
-    width: 70vw;
+    height: 100vh;
+    width: 100%;
     background-color: white;
-} */
+} 
 .gridBlock {
   display: block;
   position: absolute;
@@ -277,6 +277,8 @@ import Hero from "./Hero.astro";
       
     gsap.registerPlugin(ScrollTrigger);
 
+    gsap.set(".next-section", {autoAlpha: 0})
+
     gsap.timeline({
     scrollTrigger: {
         trigger: ".grid-container",
@@ -288,12 +290,34 @@ import Hero from "./Hero.astro";
     },
     })
     .set(".gridBlock:not(.centerBlock)", {autoAlpha: 0})
-    .set(".next-section", {autoAlpha: 0})
-    .to(".gridBlock:not(.centerBlock)", {duration: 0.1, autoAlpha: 1}, 0.001)
-    .to(".next-section", {duration: 0.1, autoAlpha: 1}, 0.001)
+    .to(".gridBlock:not(.centerBlock):not(.next-section)", {duration: 0.1, autoAlpha: 1}, 0.001)
     .from(".gridLayer", {
     scale: 3.3333,
     ease: "none",
+    })
+
+    // gsap.timeline({
+    //     scrollTrigger: {
+    //         trigger: ".grid-container",
+    //         start:() => innerHeight * 5,
+    //         end:() => innerHeight * 6,
+    //         markers:true,
+    //     }
+    // })
+    // .set(".next-section", {duration: 0.5, autoAlpha: 1})
+
+    gsap.to('.next-section', {
+        duration: "3", autoAlpha: "1", ease: "back",
+        scrollTrigger: {
+            trigger: ".next-section",
+            start: "center center",
+            // start:() => innerHeight * 4.5,
+            // end:() => innerHeight * 4.9,
+            end: "bottom bottom",
+            markers:true,
+
+            // toggleActions: "play complete restart "
+        }
     })
 
     const imagePath = "https://ik.imagekit.io/patdalcia/bbl/";
