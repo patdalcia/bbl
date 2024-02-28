@@ -1,7 +1,6 @@
 ---
 import Navigation from "./Navigation.astro";
 ---
-<!-- <Navigation /> -->
 <section class="bg-black">
     <div class="grid-container">
         <div class="grid">
@@ -18,7 +17,12 @@ import Navigation from "./Navigation.astro";
             <div class="gridBlock centerBlock flex justify-center items-start">
                 <div class="flex flex-col justify-center items-top w-full h-4/5 text-center">
                     <h1 class="text-4xl font-bold">Hello there</h1>
-                    <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <p class="inline-block">Scroll Down
+                        <svg xmlns="http://www.w3.org/2000/svg" class="animate-bounce h-4 w-4 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        </svg>
+                    </p>
+                        
                 </div>
             </div>
           </div>
@@ -37,10 +41,14 @@ import Navigation from "./Navigation.astro";
           <div class="gridLayer">
             <div class="gridBlock"></div>
           </div>
+          <!-- <div class="gridLayer">
+            <div class="gridBlock next-section bg-white">
+                test
+              </div>
+          </div> -->
         </div>
       </div>
 </section>
-
 
 <style>
     .gridBlock {
@@ -221,10 +229,41 @@ import Navigation from "./Navigation.astro";
     height: 15.278vw;
   }
 }
+/* .gridLayer:nth-child(10) .gridBlock {
+    top: 80vw;
+    left: 0;
+    height: 20vh;
+    width: 70vw;
+    background-color: white;
+} */
 .gridBlock {
   display: block;
   position: absolute;
 }
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+
+  .bounce-arrow {
+    animation: bounce 2s infinite;
+  }
+
+    .visible, .invisible {
+    opacity: 0.0;
+    transition: opacity 0.5s ease;
+    }
+    .visible {
+    opacity: 1.0;
+    }
 </style>
 
 <script>
@@ -242,14 +281,16 @@ import Navigation from "./Navigation.astro";
         scrub: true,
         pin: ".grid",
         anticipatePin: 1
-    }
+    },
     })
     .set(".gridBlock:not(.centerBlock)", {autoAlpha: 0})
+    .set(".next-section", {autoAlpha: 0})
     .to(".gridBlock:not(.centerBlock)", {duration: 0.1, autoAlpha: 1}, 0.001)
+    .to(".next-section", {duration: 0.1, autoAlpha: 1}, 0.001)
     .from(".gridLayer", {
     scale: 3.3333,
     ease: "none",
-    });
+    })
 
     const imagePath = "https://ik.imagekit.io/patdalcia/bbl/";
     const size = Math.max(innerWidth, innerHeight);
@@ -267,7 +308,7 @@ import Navigation from "./Navigation.astro";
     const imageIndexes = shuffleArray([...Array(10).keys()]); // Create an array of indexes [0, 1, ..., 9] and shuffle it
 
     // Set a background image from ImageKit randomly
-    gsap.set('.gridBlock:not(.centerBlock)', {
+    gsap.set('.gridBlock:not(.centerBlock):not(.next-section)', {
     backgroundImage: (i) => {
         const imageIndex = imageIndexes[i % imageIndexes.length] + 1; // Use modulo to loop over indexes if there are more blocks than images
         return `url(${imagePath}image${imageIndex}.png?tr=w-${size},h-${size})`;
@@ -276,13 +317,4 @@ import Navigation from "./Navigation.astro";
     
     // Set the center piece to always use 'Hero.png'
     gsap.to(".centerPiece .gridBlock", {autoAlpha: 1, duration: 0.5});
-    // const bigImg = new Image;    
-    // bigImg.addEventListener("load", function () {
-    
-    // });
-    // bigImg.src = `https://ik.imagekit.io/patdalcia/bbl/Transparent.png?tr=w-${size},h-${size}`;
-    // `${imagePath}Hero.png?tr=w-${size},h-${size}`
 </script>
-
-<!-- `https://picsum.photos/${size}/${size}?random=50` -->
-<!-- `url(https://picsum.photos/${size}/${size}?random=${i})` -->
