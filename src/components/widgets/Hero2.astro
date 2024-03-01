@@ -1,8 +1,6 @@
 ---
-import Navigation from "./Navigation.astro";
+// Backup Hero page based on screen size
 import Hero from "./Hero.astro";
-import SideScroll from "./SideScroll.astro";
-import Seperator from "./Seperator.astro";
 ---
 <section class="hidden md:block bg-black">
     <div class="grid-container">
@@ -30,7 +28,7 @@ import Seperator from "./Seperator.astro";
             </div>
           </div>
           <div class="gridLayer">
-            <div class="gridBlock"><a href="https://greensock.com" target="_blank"></a></div>
+            <div class="gridBlock"></div>
           </div>
           <div class="gridLayer">
             <div class="gridBlock"></div>
@@ -46,9 +44,6 @@ import Seperator from "./Seperator.astro";
           </div>
         </div>
       </div>
-</section>
-<section class="next-section">
-    <SideScroll />
 </section>
 <section class="md:hidden">
     <Hero />
@@ -289,16 +284,6 @@ import Seperator from "./Seperator.astro";
     scale: 3.3333,
     ease: "none",
     })
-
-    // gsap.timeline({
-    //     scrollTrigger: {
-    //         trigger: ".grid-container",
-    //         start:() => innerHeight * 5,
-    //         end:() => innerHeight * 6,
-    //         markers:true,
-    //     }
-    // })
-    // .set(".next-section", {duration: 0.5, autoAlpha: 1})
 
     gsap.to('.next-section', {
         duration: "3", autoAlpha: "1", ease: "back",
