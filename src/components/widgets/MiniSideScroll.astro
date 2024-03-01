@@ -1,0 +1,98 @@
+---
+
+---
+
+<div class="section bg-slate-400 flex-center slides-section">
+  <div class="content">
+    <div class="text flex-center">
+      <h1>Things</h1>
+    </div>
+    <div class="slides">
+      <div class="slide">
+        <div class="slide-content bg-purple-400"></div>
+      </div>
+      <div class="slide">
+        <div class="slide-content bg-red-400"></div>
+      </div>
+      <div class="slide">
+        <div class="slide-content bg-orange-400"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section bg-blue-400"></div>
+
+<style>
+    .section {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  height: 300px;
+}
+
+.text {
+  width: 50%;
+  border: 1px solid fuchsia;
+  color: white;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.slides {
+  width: 50%;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  flex: 1 0 100%;
+  padding: 1rem;
+  border: 1px solid red;
+}
+
+.slide-content {
+  width: 100%;
+  height: 100%;
+}
+</style>
+
+<script>
+console.clear();
+import gsap from "gsap";
+import scrollTrigger from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(scrollTrigger);
+
+const slides = gsap.utils.toArray(".slide");
+const slidesAmount = slides.length;
+
+gsap.to(slides, {
+  ease: "none",
+  duration: slides.length,
+  xPercent: -(100 * (slidesAmount - 1)),
+  scrollTrigger: {
+    trigger: ".content",
+    start: "center center",
+    end: "+=" + 50 * slidesAmount + "%",
+    scrub: true,
+    pin: ".slides-section",
+    snap: 1 / (slidesAmount - 1),
+    markers: true
+  }
+});
+</script>

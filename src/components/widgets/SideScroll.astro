@@ -1,58 +1,51 @@
 ---
-
+import Layout from "../../layouts/Layout.astro"
+import Navigation from "./Navigation.astro"
 ---
+<!-- <Layout
+    title='Main',
+    description='the main page'
+> -->
+    <section class="sideScrollerContainer w-screen h-screen bg-green-400">
+        <div class="w-[600%] h-full overscroll-none flex flex-nowrap">
+            <div class="panel w-1/6 h-full bg-red-400 flex justify-center items-center text-blue-400">
 
-<div class="container bg-black">
-    <section class="panel bg-red-400">
-      ONE
+            </div>
+            <div class="panel w-1/6 h-full bg-yellow-400 flex justify-center items-center text-blue-400">
+                <div class="w-full h-full flex justify-center items-center text-white">
+                    <h1>This is a Test</h1>
+                </div>
+            </div>
+            <div class="panel w-1/6 h-full bg-blue-400 flex justify-center items-center text-blue-400">
+                Slide 3
+            </div>
+            <div class="panel w-1/6 h-full bg-orange-400 flex justify-center items-center text-blue-400">
+                Slide 4
+            </div>
+        </div>
     </section>
-    <section class="panel bg-orange-400">
-      TWO
-    </section>
-    <section class="panel bg-purple-400">
-      THREE
-    </section>
-    <section class="panel bg-green-400">
-      FOUR
-    </section>
-    <section class="panel bg-gray-400">
-      FIVE
-    </section>
-</div> 
-
-  <style>
-  .container {
-    overscroll-behavior: none;
-    width: 600vw;
-    height: 100vh;
-    display: flex;
-    flex-wrap: nowrap;
-    position: relative;
-  }
-  .panel {
-    height: 100%;
-  }
-  </style>
+<!-- </Layout> -->
 
 <script>
     import { gsap } from "gsap";
       
     import { ScrollTrigger } from "gsap/ScrollTrigger";
-    
+        
     gsap.registerPlugin(ScrollTrigger);
-  
-    let sections = gsap.utils.toArray(".panel");
-  
-    gsap.to(sections, {
-      xPercent: -100 * (sections.length - 1),
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".container",
-        pin: true,
-        scrub: 1,
-        snap: 1 / (sections.length - 1),
-        // base vertical scrolling on how wide the container is so it feels more natural.
-        end: "+=3500",
-      }
+
+    let panels = gsap.utils.toArray(".panel");
+
+    gsap.to(panels, {
+        xPercent: -100 * (panels.length - 1),
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".sideScrollerContainer",
+            pin: true,
+            scrub: 1,
+            snap: 1 / (panels.length - 1),
+            // base vertical scrolling on how wide the container is so it feels more natural.
+            end: "+=3500",
+        }
     });
-  </script>
+</script>
+

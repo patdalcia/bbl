@@ -1,6 +1,8 @@
 ---
 import Navigation from "./Navigation.astro";
 import Hero from "./Hero.astro";
+import SideScroll from "./SideScroll.astro";
+import Seperator from "./Seperator.astro";
 ---
 <section class="hidden md:block bg-black">
     <div class="grid-container">
@@ -42,13 +44,11 @@ import Hero from "./Hero.astro";
           <div class="gridLayer">
             <div class="gridBlock"></div>
           </div>
-          <div class="gridLayer">
-            <div class="gridBlock next-section">
-                <Hero />
-            </div>
-          </div>
         </div>
       </div>
+</section>
+<section class="next-section">
+    <SideScroll />
 </section>
 <section class="md:hidden">
     <Hero />
@@ -63,7 +63,7 @@ import Hero from "./Hero.astro";
 /* Grid almost fully pulled from https://www.rino-pelle.com/ */
 .grid-container {
   width: 100vw;
-  height: 400vh;
+  height: 550vh;
   position: relative;
 }
 .grid {
@@ -233,17 +233,11 @@ import Hero from "./Hero.astro";
     height: 15.278vw;
   }
 }
- .gridLayer:nth-child(10) .next-section {
-    top: 70vw;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-    background-color: white;
-} 
 .gridBlock {
   display: block;
   position: absolute;
 }
+
 
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
@@ -277,7 +271,7 @@ import Hero from "./Hero.astro";
       
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.set(".next-section", {autoAlpha: 0})
+    // gsap.set(".next-section", {autoAlpha: 0})
 
     gsap.timeline({
     scrollTrigger: {
@@ -290,7 +284,7 @@ import Hero from "./Hero.astro";
     },
     })
     .set(".gridBlock:not(.centerBlock)", {autoAlpha: 0})
-    .to(".gridBlock:not(.centerBlock):not(.next-section)", {duration: 0.1, autoAlpha: 1}, 0.001)
+    .to(".gridBlock:not(.centerBlock)", {duration: 0.1, autoAlpha: 1}, 0.001)
     .from(".gridLayer", {
     scale: 3.3333,
     ease: "none",
@@ -310,13 +304,12 @@ import Hero from "./Hero.astro";
         duration: "3", autoAlpha: "1", ease: "back",
         scrollTrigger: {
             trigger: ".next-section",
-            start: "center center",
+            start: "top center",
             // start:() => innerHeight * 4.5,
             // end:() => innerHeight * 4.9,
             end: "bottom bottom",
-            markers:true,
 
-            // toggleActions: "play complete restart "
+            // toggleActions: "play pause reverse reset"
         }
     })
 
