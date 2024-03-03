@@ -1,0 +1,1 @@
+import{g as r,S as l}from"./ScrollTrigger.sw_-D95Y.js";r.registerPlugin(l);let e=r.utils.toArray(".panel");r.to(e,{xPercent:-100*(e.length-1),ease:"none",scrollTrigger:{trigger:".sideScrollerContainer",pin:!0,scrub:1,snap:1/(e.length-1),end:"+=3500"}});

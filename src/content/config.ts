@@ -2,6 +2,13 @@
 import { z, defineCollection } from 'astro:content';
 // 2. Define your collection(s)
 const placeHolderCollection = defineCollection({ 
+    type: 'content',
+    schema: z.object({
+        title: z.string()
+    })
+ });
+
+ const slideContentCollection = defineCollection({
     schema: z.object({
         title: z.string()
     })
@@ -10,4 +17,5 @@ const placeHolderCollection = defineCollection({
 //    This key should match your collection directory name in "src/content"
 export const collections = {
   'placeholder': placeHolderCollection,
+  'slidecontent': slideContentCollection,
 };
