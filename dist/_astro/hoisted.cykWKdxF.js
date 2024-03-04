@@ -1,1 +1,0 @@
-import{g as t}from"./index.FSCrshNh.js";import{S as s}from"./ScrollTrigger.-MEY3nbS.js";console.clear();t.registerPlugin(s);const r=t.utils.toArray(".slide"),e=r.length;t.to(r,{ease:"none",duration:r.length,xPercent:-(100*(e-1)),scrollTrigger:{trigger:".content",start:"center center",end:"+="+50*e+"%",scrub:!0,pin:".slides-section",snap:1/(e-1),markers:!0}});
