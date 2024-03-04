@@ -1,0 +1,39 @@
+<template>
+    <div id="line-container">
+      <svg id="line-svg" viewBox="0 0 100 100">
+        <path id="line-path" stroke="white" stroke-width="2" fill="none" d="M0,0"></path>
+      </svg>
+    </div>
+  </template>
+
+  <script>
+    import { gsap } from 'gsap';
+    import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+    
+    export default {
+      async mounted() {
+        gsap.registerPlugin(MotionPathPlugin);
+  
+        const path = document.querySelector('#line-path');
+        const pathLength = path.getTotalLength();
+  
+        // Hide the line initially
+        path.style.strokeDasharray = pathLength;
+        path.style.strokeDashoffset = pathLength;
+  
+        // Create the animation
+        gsap.to(path, {
+          duration: 2,
+          motionPath: {
+            path: path,
+            align: path,
+            autoRotate: true,
+            start: 0,
+            end: 1,
+          },
+          ease: "none",
+        });
+      }
+    }
+  </script>
+  

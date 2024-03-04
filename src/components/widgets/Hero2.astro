@@ -18,7 +18,8 @@ import Hero from "./Hero.astro";
             <div class="gridBlock centerBlock flex justify-center items-start">
                 <div class="flex flex-col justify-center items-top w-full h-4/5 text-center">
                     <h1 class="text-4xl font-bold">Hello there</h1>
-                    <p class="inline-block">Scroll Down
+                    <h3>Lets <span></span></h3>
+                    <p class="inline-block">
                         <svg xmlns="http://www.w3.org/2000/svg" class="animate-bounce h-4 w-4 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                         </svg>
@@ -261,12 +262,20 @@ import Hero from "./Hero.astro";
 
 <script>
     import { gsap } from "gsap";
-      
+    import { TextPlugin } from "gsap/TextPlugin";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
       
     gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(TextPlugin);
 
-    // gsap.set(".next-section", {autoAlpha: 0})
+    const tl = gsap.timeline({repeat:-1, repeatDelay:1, yoyo:true});
+    tl.to("h3 span", {duration: 2, text:" make some music."})
+    tl.to("h3 span", {duration: 2, text:" go crazy"})
+    tl.to("h3 span", {duration: 2, text:" stay together."})
+    tl.to("h3 span", {duration: 2, text:" dance."})
+    tl.to("h3 span", {duration: 2, text:" live it up."})
+    tl.to("h3 span", {duration: 2, text:" talk about love."})
+    
 
     gsap.timeline({
     scrollTrigger: {

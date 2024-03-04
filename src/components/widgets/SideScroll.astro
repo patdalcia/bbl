@@ -3,6 +3,7 @@
 // const placeholders = await getCollection('placeholder');
 import { getEntry } from "astro:content";
 import Prose from "../../components/Prose.astro"
+import lineDrawEffect from '../widgets/lineDrawEffect.astro'
 const entry = await getEntry('placeholder', 'first');
 const { Content, headings } = await entry.render();
 ---
@@ -25,7 +26,7 @@ const { Content, headings } = await entry.render();
                     })
                 } -->
                 <Prose>
-                    <p>Title: {entry.data.title.toString()}</p>
+                    <lineDrawEffect />
                     <Content />
                 </Prose>
             </div>  
