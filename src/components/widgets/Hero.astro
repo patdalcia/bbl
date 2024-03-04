@@ -1,8 +1,10 @@
 ---
-import Navigation from '../widgets/Navigation.astro'
-import { Image } from 'astro:assets';
-import heroImage from '../../util/miniHero5.png'
-import SideScroll from '../widgets/SideScroll.astro'
+import Prose from "../Prose.astro";
+import SideScroll from "./SideScroll.astro";
+
+import { getEntry } from "astro:content";
+const entry = await getEntry("placeholder", "first");
+const { Content, headings } = await entry.render();
 
 
 export interface Props {
@@ -27,6 +29,7 @@ const {
         </div>
       </div>
     </div>
+    <!-- <SideScroll /> -->
   </div>
   
   <script>
