@@ -23,10 +23,25 @@ const {
       <div class="hero-content text-center">
         <div class="max-w-md">
           <h1 class="text-5xl font-bold">Hello there</h1>
-          <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-          <button class="btn ">Get Started</button>
+          <h3>Lets <span></span></h3>
         </div>
       </div>
     </div>
   </div>
   
+  <script>
+    import { gsap } from "gsap";
+    import { TextPlugin } from "gsap/TextPlugin";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+      
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(TextPlugin);
+
+    const tl = gsap.timeline({repeat:-1, repeatDelay:1, yoyo:true});
+    tl.to("h3 span", {duration: 2, text:" make some music."})
+    tl.to("h3 span", {duration: 2, text:" go crazy"})
+    tl.to("h3 span", {duration: 2, text:" stay together."})
+    tl.to("h3 span", {duration: 2, text:" dance."})
+    tl.to("h3 span", {duration: 2, text:" live it up."})
+    tl.to("h3 span", {duration: 2, text:" talk about love."})
+  </script>
