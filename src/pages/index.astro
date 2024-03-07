@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro'
 import Navigation from '../components/widgets/Navigation.astro'
 import Hero2 from '../components/widgets/Hero2.astro'
 import SideScroll from '../components/widgets/SideScroll.astro'
+import Hero from '../components/widgets/Hero.astro'
 ---
 <Layout
 	title='Main',
@@ -10,8 +11,13 @@ import SideScroll from '../components/widgets/SideScroll.astro'
 >
 	<main>
 		<Navigation />
-		<Hero2 />
-		<SideScroll />
+		<section class="hidden md:block">
+			<Hero2 />
+			<SideScroll />
+		</section>
+		<section class="md:hidden">
+			<Hero />
+		</section>
 	</main>
 
 </Layout>
